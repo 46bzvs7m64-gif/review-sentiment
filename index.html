@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>商品评论情感分析系统</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Microsoft YaHei","微软雅黑",sans-serif;background:#f4f5f7;color:#222;line-height:1.7;padding:32px 16px}
+  .wrap{max-width:880px;margin:0 auto}
+  .hero{background:linear-gradient(135deg,#8a1f1f,#b30000);color:#fff;border-radius:14px;padding:30px 32px;margin-bottom:20px}
+  .hero h1{font-size:23px;margin-bottom:8px}
+  .hero p{opacity:.92;font-size:14px}
+  .btns{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;background:#fff;color:#b30000;text-decoration:none;font-weight:700;font-size:13.5px;padding:9px 18px;border-radius:8px}
+  .btn.ghost{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.5)}
+  .card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  h2{font-size:16px;color:#b30000;margin-bottom:12px;padding-left:10px;border-left:4px solid #b30000}
+  ul{padding-left:20px;font-size:14px}
+  li{margin-bottom:7px}
+  .pipe{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:13px;margin-top:6px}
+  .step{background:#fdf0f0;color:#b30000;border:1px solid #f0cccc;border-radius:20px;padding:5px 14px;font-weight:700}
+  .arr{color:#bbb;font-weight:700}
+  .muted{color:#999;font-size:12.5px;margin-top:14px}
+  code{background:#f6f6f6;padding:1px 6px;border-radius:4px;font-size:12.5px;color:#b30000}
+  .metrics{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+  .m{flex:1;min-width:120px;border:1px solid #eee;border-radius:10px;padding:14px;text-align:center}
+  .m b{display:block;font-size:26px}.m span{font-size:12px;color:#888}
+  .g{color:#1aad4a}.r{color:#e03636}.gr{color:#999}
+  .tag{display:inline-block;font-size:12px;background:#f2faf4;color:#178a42;border:1px solid #d5efdd;border-radius:14px;padding:3px 11px;margin:0 6px 7px 0}
+  .bad{background:#fdf4f4;border-left:3px solid #e08080;border-radius:0 8px 8px 0;padding:9px 13px;font-size:13px;margin-bottom:8px;color:#5a3333}
+  @media(max-width:560px){body{padding:18px 10px}.hero{padding:22px 18px}.hero h1{font-size:19px}.card{padding:18px 16px}.pipe{gap:6px}.step{font-size:12px;padding:4px 11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>商品评论情感分析系统</h1>
+    <p>面向电商 / 用户运营岗位场景：批量分析商品评论，输出好评率、好评关键词、差评集中维度与可落地的运营改进建议，把人工"翻评论"变成结构化的用户声音报告。Python 标准库实现，零第三方依赖。</p>
+    <div class="btns">
+      <a class="btn" href="sentiment_report.html">查看分析报告 →</a>
+      <a class="btn ghost" href="https://github.com/46bzvs7m64-gif/review-sentiment" target="_blank">GitHub 源码</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>分析链路</h2>
+    <div class="pipe">
+      <span class="step">导入评论 CSV</span><span class="arr">→</span>
+      <span class="step">正/负词典匹配</span><span class="arr">→</span>
+      <span class="step">否定窗口反转</span><span class="arr">→</span>
+      <span class="step">程度副词加权</span><span class="arr">→</span>
+      <span class="step">评价维度归集</span><span class="arr">→</span>
+      <span class="step">报告+改进建议</span>
+    </div>
+    <p class="muted">输入只需电商后台导出、含"评论"列的 CSV；词典可按品类持续扩充，分析框架无需改动。</p>
+  </div>
+
+  <div class="card">
+    <h2>核心能力</h2>
+    <ul>
+      <li><b>情感判定：</b>正/负情感词典 + 否定词窗口反转（"不打滑"正确识别为好评）+ 程度副词加权（"太硬"权重更高）</li>
+      <li><b>工程细节：</b>否定作用域以标点为界（逗号后内容不被误反转）；长词优先匹配，避免"严重"中的"重"被误判</li>
+      <li><b>维度归集：</b>尺码鞋楦 / 脚感缓震 / 外观做工 / 质量耐久 / 物流包装 / 价格 / 客服 / 抓地安全，8 大维度定位问题</li>
+      <li><b>动作导向：</b>差评不只计数——尺码问题→详情页加尺码表，质量问题→批次抽检+主动售后召回，逐维度给改进动作</li>
+      <li><b>双格式输出：</b>Markdown 存档 + 可视化 HTML 报告（情感分布、关键词、维度条形、差评卡片）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>报告样例（35 条跑鞋演示评论）</h2>
+    <div class="metrics">
+      <div class="m"><b class="g">42.9%</b><span>好评 15 条</span></div>
+      <div class="m"><b class="gr">11.4%</b><span>中评 4 条</span></div>
+      <div class="m"><b class="r">45.7%</b><span>差评 16 条</span></div>
+    </div>
+    <p style="margin:14px 0 6px;font-size:13px;color:#666"><b>用户夸：</b></p>
+    <div><span class="tag">不错×3</span><span class="tag">轻×2</span><span class="tag">好看×2</span><span class="tag">舒服×2</span><span class="tag">不打滑×1</span></div>
+    <p style="margin:12px 0 6px;font-size:13px;color:#666"><b>典型差评：</b></p>
+    <div class="bad">“尺码严重不准，偏大很多，退换货很麻烦” → 尺码/鞋楦维度</div>
+    <div class="bad">“开胶了，才穿两周就出现质量问题，生气” → 质量耐久维度</div>
+    <div class="bad">“下雨天鞋底打滑，差点摔跤，抓地太差” → 抓地/安全维度</div>
+    <p class="muted">页面仅展示分析框架与报告形态，评论为演示数据；词典法结果可解释、可扩词，生产环境可替换为预训练模型，链路不变。</p>
+  </div>
+</div>
+</body>
+</html>
