@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>评论情感分析报告</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei",sans-serif;background:#f4f5f7;color:#222;padding:24px 14px;line-height:1.6}
+.box{max-width:880px;margin:0 auto;background:#fff;border-radius:14px;padding:28px 30px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+h1{font-size:20px}.s{color:#999;font-size:12.5px;margin:4px 0 20px}
+h2{font-size:15.5px;color:#b30000;margin:24px 0 12px;padding-left:10px;border-left:4px solid #b30000}
+.cards{display:flex;gap:14px;flex-wrap:wrap}
+.sc{flex:1;min-width:130px;border:1px solid #eee;border-radius:10px;padding:16px;text-align:center}
+.sc .v{font-size:30px;font-weight:800}.sc .l{font-size:12.5px;color:#888;margin-top:2px}.sc .c{font-size:11.5px;color:#aaa}
+.g{color:#1aad4a}.r{color:#e03636}.gr{color:#999}
+.stack{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:6px 0 4px}
+.stack i{display:block;height:100%}
+.legend{font-size:12px;color:#888}
+.legend b{font-weight:700}
+.tag{display:inline-block;font-size:12.5px;background:#f2faf4;color:#178a42;border:1px solid #d5efdd;border-radius:16px;padding:4px 12px;margin:0 6px 8px 0}
+.tag b{font-weight:800;margin-left:2px}
+.arow{display:flex;align-items:center;margin-bottom:9px;font-size:13px}
+.alab{width:96px;flex:none;color:#444}
+.abar{flex:1;background:#f6f6f6;border-radius:5px;height:15px;margin:0 10px;overflow:hidden}
+.abar i{display:block;height:100%;background:linear-gradient(90deg,#e86a6a,#d82a2a);border-radius:5px}
+.anum{width:44px;flex:none;text-align:right;color:#d82a2a;font-weight:700}
+.bad{background:#fdf4f4;border-left:3px solid #e08080;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13.5px;margin-bottom:9px;color:#5a3333}
+ol{padding-left:20px;font-size:13.5px}ol li{margin-bottom:8px}
+.dim{color:#aaa;font-size:13px}
+.back{display:inline-block;margin-top:24px;color:#b30000;font-size:13px;text-decoration:none}
+.foot{color:#bbb;font-size:11.5px;margin-top:18px;border-top:1px solid #f0f0f0;padding-top:12px}
+@media(max-width:560px){.box{padding:20px 16px}.sc .v{font-size:25px}.alab{width:78px;font-size:12px}}
+</style></head><body><div class="box">
+<h1>某品牌跑鞋（演示） · 评论情感分析报告</h1>
+<div class="s">样本量 35 条 · 词典法分析（正/负词典 + 否定窗口反转 + 程度副词加权 + 维度归集）· 演示数据</div>
+
+<div class="cards">
+  <div class="sc"><div class="v g">42.9%</div><div class="l">好评</div><div class="c">15 条</div></div>
+  <div class="sc"><div class="v gr">11.4%</div><div class="l">中评</div><div class="c">4 条</div></div>
+  <div class="sc"><div class="v r">45.7%</div><div class="l">差评</div><div class="c">16 条</div></div>
+</div>
+<div class="stack"><i style="width:42.86%;background:#1aad4a"></i><i style="width:11.43%;background:#c4c4c4"></i><i style="width:45.71%;background:#e03636"></i></div>
+<div class="legend"><span style="color:#1aad4a">■</span> 好评 <b>42.86%</b> ｜ <span style="color:#c4c4c4">■</span> 中评 <b>11.43%</b> ｜ <span style="color:#e03636">■</span> 差评 <b>45.71%</b></div>
+
+<h2>用户夸什么</h2>
+<div><span class="tag pos">不错<b>×3</b></span><span class="tag pos">轻<b>×2</b></span><span class="tag pos">好看<b>×2</b></span><span class="tag pos">好<b>×2</b></span><span class="tag pos">舒服<b>×2</b></span><span class="tag pos">颜值<b>×1</b></span><span class="tag pos">不打滑<b>×1</b></span><span class="tag pos">快<b>×1</b></span><span class="tag pos">回弹<b>×1</b></span><span class="tag pos">明显<b>×1</b></span></div>
+
+<h2>差评集中在哪些维度</h2>
+<div class="arow"><span class="alab">质量耐久</span><span class="abar"><i style="width:100%"></i></span><span class="anum">5 条</span></div><div class="arow"><span class="alab">尺码/鞋楦</span><span class="abar"><i style="width:60%"></i></span><span class="anum">3 条</span></div><div class="arow"><span class="alab">外观做工</span><span class="abar"><i style="width:60%"></i></span><span class="anum">3 条</span></div><div class="arow"><span class="alab">物流/包装</span><span class="abar"><i style="width:40%"></i></span><span class="anum">2 条</span></div><div class="arow"><span class="alab">脚感/缓震</span><span class="abar"><i style="width:40%"></i></span><span class="anum">2 条</span></div><div class="arow"><span class="alab">客服售后</span><span class="abar"><i style="width:40%"></i></span><span class="anum">2 条</span></div><div class="arow"><span class="alab">价格体验</span><span class="abar"><i style="width:40%"></i></span><span class="anum">2 条</span></div><div class="arow"><span class="alab">抓地/安全</span><span class="abar"><i style="width:20%"></i></span><span class="anum">1 条</span></div>
+
+<h2>典型差评（情感分最负面）</h2>
+<div class="bad">“鞋楦偏窄，宽脚慎拍，夹得脚趾疼”</div><div class="bad">“鞋底太硬了，跑步震脚，缓震基本没有，失望”</div><div class="bad">“尺码严重不准，偏大很多，退换货很麻烦”</div><div class="bad">“下雨天鞋底打滑，差点摔跤，抓地太差”</div><div class="bad">“开胶了，才穿两周就出现质量问题，生气”</div>
+
+<h2>运营改进建议</h2>
+<ol><li>质量负面集中：抽检对应批次，重点排查开胶、异味问题，差评用户主动售后召回</li><li>尺码问题突出：商品详情页增加尺码建议表/真人试穿反馈，客服话术前置提醒</li><li>做工细节：加强溢胶/线头品控，色差问题补充实拍图</li></ol>
+
+<a class="back" href="index.html">← 返回项目首页</a>
+<div class="foot">数据为演示评论，仅展示分析框架与报告形态；真实使用导入电商后台导出的评论 CSV 即可，词典可按品类持续扩充。</div>
+</div></body></html>
